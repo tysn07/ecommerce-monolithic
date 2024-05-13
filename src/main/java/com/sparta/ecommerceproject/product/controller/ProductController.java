@@ -18,7 +18,7 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @Secured("ROLE_ADMIN")
+   // @Secured("ROLE_ADMIN")
     @PostMapping
     public ResponseEntity<String> createAdminProduct(@RequestBody ProductRequestDto requestDto) {
         productService.createProduct(requestDto);
