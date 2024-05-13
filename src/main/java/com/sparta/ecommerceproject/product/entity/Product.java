@@ -42,6 +42,8 @@ public class Product {
         this.description = productRequest.getDescription();
     }
 
+    public void updateStockAfterOrder(Long quantity) {this.stock = stock - quantity;}
+
 
 
 
