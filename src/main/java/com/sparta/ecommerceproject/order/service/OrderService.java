@@ -7,6 +7,7 @@ import com.sparta.ecommerceproject.order.dto.OrderDetailResponseDto;
 import com.sparta.ecommerceproject.order.dto.OrderResponseDto;
 import com.sparta.ecommerceproject.order.entity.Order;
 import com.sparta.ecommerceproject.order.entity.OrderDetail;
+import com.sparta.ecommerceproject.order.entity.OrderState;
 import com.sparta.ecommerceproject.order.repository.OrderDetailRepository;
 import com.sparta.ecommerceproject.order.repository.OrderRepository;
 import com.sparta.ecommerceproject.product.entity.Product;
@@ -34,7 +35,7 @@ public class OrderService {
     @Transactional
     public void createOrder(Map<Long,Long> basket, UserDetailsImpl userDetails, Long addressId) throws Exception {
         checkBasket(basket);
-        Order order = new Order(userDetails.getUser().getId(), addressId);
+        Order order = new Order(userDetails.getUser().getId(),addressId,OrderState.NOTPAYED);
         orderRepository.save(order);
         for(Long key:basket.keySet()){
             OrderDetail orderDetail= new OrderDetail(order.getId(),key,basket.get(key),productService.getProduct(key).getPrice(),productService.getProduct(key).getName());
