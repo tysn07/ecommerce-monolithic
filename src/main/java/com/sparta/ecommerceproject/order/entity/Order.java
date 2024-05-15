@@ -20,9 +20,20 @@ public class Order {
     @Column
     private Long addressId;
 
-    public Order(Long userId,Long addressId){
+    @Column
+    private String KakaoTid;
+
+    @Enumerated(value = EnumType.STRING)
+    private OrderState state;
+    public Order(Long userId,Long addressId,OrderState state){
         this.userId = userId;
         this.addressId = addressId;
+        this.state = state;
     }
+    public void updateTid(String tid){
+        this.KakaoTid=tid;
+    }
+    public void changeState(OrderState state){this.state = state;}
+
 
 }
