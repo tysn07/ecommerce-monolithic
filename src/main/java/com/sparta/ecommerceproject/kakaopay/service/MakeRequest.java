@@ -11,7 +11,7 @@ import org.springframework.util.LinkedMultiValueMap;
 @RequiredArgsConstructor
 public class MakeRequest {
 
-    public PayRequestDto getReadyRequest(PayInfoDto payInfoDto){
+    public PayRequestDto getReadyRequest(PayInfoDto payInfoDto,Long orderId){
         LinkedMultiValueMap<String,String> map=new LinkedMultiValueMap<>();
         map.add("cid","TC0ONETIME");
         map.add("partner_order_id","partner_order_id");

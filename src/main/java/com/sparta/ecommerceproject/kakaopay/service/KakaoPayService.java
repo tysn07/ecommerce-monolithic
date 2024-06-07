@@ -37,7 +37,7 @@ public class KakaoPayService {
         String auth = "KakaoAK " + adminKey;
         headers.set("Content-type","application/x-www-form-urlencoded;charset=utf-8");
         headers.set("Authorization",auth);
-        PayRequestDto payRequestDto = makeRequest.getReadyRequest(createPayInfo(orderId));
+        PayRequestDto payRequestDto = makeRequest.getReadyRequest(createPayInfo(orderId),orderId);
         HttpEntity<MultiValueMap<String, String>> urlRequest = new HttpEntity<>(payRequestDto.getMap(), headers);
         RestTemplate rt = new RestTemplate();
         PayReadyResDto payReadyResDto = rt.postForObject(payRequestDto.getUrl(), urlRequest, PayReadyResDto.class);
