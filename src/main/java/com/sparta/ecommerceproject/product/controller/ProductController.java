@@ -32,7 +32,7 @@ public class ProductController {
         return ResponseEntity.status(200)
                 .body("Product update successfully");
     }
-    @Secured("ROLE_ADMIN")
+    //@Secured("ROLE_ADMIN")
     @DeleteMapping("/{productId}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long productId){
         productService.deleteProduct(productId);
