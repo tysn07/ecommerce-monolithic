@@ -15,12 +15,17 @@ import com.sparta.ecommerceproject.product.service.ProductService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RLock;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
 
 @Service
 @Slf4j
@@ -31,19 +36,37 @@ public class OrderService {
     private final OrderDetailRepository orderDetailRepository;
     private final ProductService productService;
     private final AddressService addressService;
-
+    private final RedissonClient redissonClient;
 
     @Transactional
     public void createOrder(Map<Long,Long> basket, UserDetailsImpl userDetails, Long addressId) throws Exception {
 
-        checkBasket(basket);
-        Order order = new Order(userDetails.getUser().getId(),addressId,OrderState.NOTPAYED);
-        orderRepository.save(order);
-        for(Long key:basket.keySet()){
-            OrderDetail orderDetail= new OrderDetail(order.getId(),key,basket.get(key),productService.getProduct(key).getPrice(),productService.getProduct(key).getName());
-            orderDetailRepository.save(orderDetail);
-            updateStock(key,basket.get(key));
+       String keyname = "w";
+        final RLock lock = redissonClient.getLock(keyname);
+        try{
+            boolean available = lock.tryLock(500, 500, TimeUnit.MILLISECONDS);
+            if (!available) {
+                System.out.println("lock 획득 실패");// (3)
+                return;
+            }
+            checkBasket(basket);
+
+            Order order = new Order(userDetails.getUser().getId(),addressId,OrderState.NOTPAYED);
+            orderRepository.save(order);
+            for(Long key:basket.keySet()){
+                updateStock(key,basket.get(key));
+                OrderDetail orderDetail= new OrderDetail(order.getId(),key,basket.get(key),productService.getProduct(key).getPrice(),productService.getProduct(key).getName());
+                orderDetailRepository.save(orderDetail);
+
+            }
+
+        }finally {
+            if (lock.isLocked() && lock.isHeldByCurrentThread()) {
+                lock.unlock();
+            }
         }
+
+
 
     }
     public List<OrderDetailResponseDto> getOrderDetailList(Long orderId){
@@ -61,8 +84,7 @@ public class OrderService {
     }
 
     public void updateStock(Long productId,Long quantity){
-        Product product =  productService.getProduct(productId);
-        product.updateStockAfterOrder(quantity);
+        productService.getProduct(productId).updateStockAfterOrder(quantity);
 
     }
 
@@ -99,5 +121,7 @@ public class OrderService {
         }
         return totalPrice;
     }
+
+
 
 }
