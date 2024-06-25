@@ -49,7 +49,6 @@ public class OrderService {
             updateStock(key,basket.get(key));
             OrderDetail orderDetail= new OrderDetail(order.getId(),key,basket.get(key),productService.getProduct(key).getPrice(),productService.getProduct(key).getName());
             orderDetailRepository.save(orderDetail);
-
         }
 
     }
