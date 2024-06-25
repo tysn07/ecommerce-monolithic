@@ -1,13 +1,20 @@
 package com.sparta.ecommerceproject.product.service;
 
 import com.sparta.ecommerceproject.product.dto.ProductRequestDto;
+import com.sparta.ecommerceproject.product.dto.ProductResponse;
 import com.sparta.ecommerceproject.product.dto.ProductUpdateRequest;
 import com.sparta.ecommerceproject.product.entity.Product;
 import com.sparta.ecommerceproject.product.repository.ProductRepository;
 import com.sparta.ecommerceproject.user.entity.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -43,6 +50,12 @@ public class ProductService {
     public void deleteProduct(Long productId){
         Product product = getProduct(productId);
         productRepository.delete(product);
+    }
+
+    public List<ProductResponse> getAllProducts(){
+        List<Product> productList = productRepository.findAll();
+        return productList.stream().map(ProductResponse::new).toList();
+
     }
 
 }
