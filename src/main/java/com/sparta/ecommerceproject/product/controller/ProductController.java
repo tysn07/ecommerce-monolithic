@@ -20,6 +20,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/products")
+@CrossOrigin("http://localhost:3000")
 public class ProductController {
 
     private final ProductService productService;
@@ -31,7 +32,7 @@ public class ProductController {
         return ResponseEntity.status(201)
                 .body("Product created successfully");
     }
-    @Secured("ROLE_ADMIN")
+   // @Secured("ROLE_ADMIN")
     @PutMapping("/{productId}")
     public ResponseEntity<String> updateProduct(@PathVariable Long productId, @RequestBody ProductUpdateRequest productRequest) {
         productService.updateProduct(productId, productRequest);

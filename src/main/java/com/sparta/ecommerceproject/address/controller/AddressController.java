@@ -13,6 +13,7 @@ import java.nio.file.AccessDeniedException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users/address")
+@CrossOrigin("http://localhost:3000")
 public class AddressController {
 
     private final AddressService addressService;
