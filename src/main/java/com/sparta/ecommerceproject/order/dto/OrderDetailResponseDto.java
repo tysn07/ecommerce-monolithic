@@ -13,12 +13,14 @@ public class OrderDetailResponseDto {
 
     private Long productId;
     private Long quantity;
+    private Long price;
     private String productName;
 
     public OrderDetailResponseDto(OrderDetail orderDetail){
         this.productId = orderDetail.getProductId();
         this.quantity = orderDetail.getQuantity();
         this.productName = orderDetail.getProductName();
+        this.price = orderDetail.getPrice();
     }
 
 

@@ -41,8 +41,6 @@ public class OrderController {
     public ResponseEntity<String> cancelOrder(@PathVariable Long orderId) {
             orderService.deleteOrder(orderId);
         return ResponseEntity.status(201).body("cancel order");
-
-
     }
 
 

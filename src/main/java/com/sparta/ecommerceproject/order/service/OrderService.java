@@ -41,7 +41,6 @@ public class OrderService {
     private final ProductRepository productRepository;
     @Transactional
     public void createOrder(Map<Long,Long> basket, UserDetailsImpl userDetails, Long addressId) throws Exception {
-        System.out.println(productService.getProduct(16L).getStock());
         checkBasket(basket);
         Order order = new Order(userDetails.getUser().getId(),addressId,OrderState.NOTPAYED);
         orderRepository.save(order);
