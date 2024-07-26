@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,10 +25,11 @@ public class KakaoPayController {
     }
 
     @GetMapping("/success/{orderId}")
-    public ResponseEntity<?> afterGetRedirectUrl(@PathVariable Long orderId,@RequestParam("pg_token") String pgToken) throws Exception {
+    public RedirectView afterGetRedirectUrl(@PathVariable Long orderId, @RequestParam("pg_token") String pgToken) throws Exception {
         PayApproveResDto kakaoApprove = kakaoPayService.getApprove(pgToken,orderId);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(kakaoApprove);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:3000/");
+        return redirectView;
     }
 
     @GetMapping("/cancel/{orderId}")

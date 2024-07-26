@@ -30,7 +30,6 @@ public class OrderController {
     @GetMapping("/{orderId}")
     public ResponseEntity<List<OrderDetailResponseDto>> getOrder(@PathVariable Long orderId){
             return ResponseEntity.status(200).body(orderService.getOrderDetailList(orderId));
-
     }
 
     @GetMapping("/userorder")
