@@ -79,7 +79,7 @@ public class OrderService {
         List<OrderResponseDto> ResponseList= new ArrayList<OrderResponseDto>();
         for(Order order:orderList){
             Address address = addressService.findOne(order.getAddressId());
-            OrderResponseDto orderResponseDto = new OrderResponseDto(order.getId(),address);
+            OrderResponseDto orderResponseDto = new OrderResponseDto(order.getId(),address,order.getState().toString());
             ResponseList.add(orderResponseDto);
         }
         return ResponseList;
