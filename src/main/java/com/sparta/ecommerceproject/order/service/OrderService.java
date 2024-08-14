@@ -16,17 +16,13 @@ import com.sparta.ecommerceproject.product.service.ProductService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RLock;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
-import org.redisson.Redisson;
-import org.redisson.api.RedissonClient;
 
 @Service
 @Slf4j
@@ -37,7 +33,6 @@ public class OrderService {
     private final OrderDetailRepository orderDetailRepository;
     private final ProductService productService;
     private final AddressService addressService;
-    private final RedissonClient redissonClient;
     private final ProductRepository productRepository;
     @Transactional
     public void createOrder(Map<Long,Long> basket, UserDetailsImpl userDetails, Long addressId) throws Exception {

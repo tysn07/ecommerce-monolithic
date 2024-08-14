@@ -28,8 +28,8 @@ public class KakaoPayService {
     private final OrderRepository orderRepository;
     private final OrderService orderService;
 
-    @Value("${kakao.api.admin-key}")
-    private String adminKey;
+
+    private String adminKey ="1ce39d67c071c7d7a22bd4a2aef360a1";
 
     @Transactional
     public PayReadyResDto getRedirectUrl(Long orderId)throws Exception{
