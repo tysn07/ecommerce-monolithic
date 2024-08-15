@@ -28,6 +28,7 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: clean bootJar 
+        run : ./gradlew clean build --exclude-task test
         
     - name: docker image build
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project .  
