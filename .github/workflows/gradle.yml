@@ -20,36 +20,36 @@ jobs:
       contents: read
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
-    # Spring Boot 어플리케이션 Build
-    - name: Build with Gradle Wrapper
-      run: ./gradlew build
+      # Spring Boot 어플리케이션 Build
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
 
-    # Docker 이미지 Build
-    - name: docker image build
-      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project .
+      # Docker 이미지 Build
+      - name: docker image build
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project .
 
-    # DockerHub Login (push 하기 위해)
-    - name: docker login
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      # DockerHub Login (push 하기 위해)
+      - name: docker login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-    # Docker hub 로 push
-    - name: Docker Hub push
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project
+      # Docker hub 로 push
+      - name: Docker Hub push
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project
 
   # 위 과정에서 푸시한 이미지를 ec2에서 풀받아서 실행
   run-docker-image-on-ec2:
@@ -57,17 +57,17 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: docker pull
-      run : sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project
+      - name: docker pull
+        run : sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project
 
-    - name: docker stop container
-      run: |
-        if [ $(sudo docker ps -a -q -f name=spring-cicd-test) ]; then
-          sudo docker stop spring-cicd-test
-        fi
+      - name: docker stop container
+        run: |
+          if [ $(sudo docker ps -a -q -f name=ecommerce-project) ]; then
+            sudo docker stop ecommerce-project
+          fi
 
-    - name: docker run new container
-      run: sudo docker run --rm -it -d -p 80:8080 --name spring-cicd-test ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project
+      - name: docker run new container
+        run: sudo docker run --rm -it -d -p 80:8080 --name ecommerce-project ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project
 
-    - name: delete old docker image
-      run: sudo docker system prune -f        
+      - name: delete old docker image
+        run: sudo docker system prune -f
