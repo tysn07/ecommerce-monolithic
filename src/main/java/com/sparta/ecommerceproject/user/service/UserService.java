@@ -1,11 +1,13 @@
 package com.sparta.ecommerceproject.user.service;
 
+import com.sparta.ecommerceproject.global.security.UserDetailsImpl;
 import com.sparta.ecommerceproject.user.dto.LoginRequestDto;
 import com.sparta.ecommerceproject.user.dto.SignupRequestDto;
 import com.sparta.ecommerceproject.user.entity.User;
 import com.sparta.ecommerceproject.user.entity.UserRoleEnum;
 import com.sparta.ecommerceproject.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,12 +38,12 @@ public class UserService {
         }
 
         UserRoleEnum role =UserRoleEnum.USER;
-        if(signupRequestDto.isAdmin()){
-            if(!ADMIN_TOKEN.equals(signupRequestDto.getAdminToken())){
-                throw new RuntimeException("관리자 암호가 일치하지 않습니다.");
-            }
-            role = UserRoleEnum.ADMIN;
-        }
+
+        if (ADMIN_TOKEN.equals(signupRequestDto.getAdminToken())) {
+           role = UserRoleEnum.ADMIN;
+        } else throw new RuntimeException("관리자 암호가 일치하지 않습니다.");
+
+
         userRepository.save(User.builder()
                 .email(email)
                 .username(username)
@@ -61,6 +63,16 @@ public class UserService {
         }
 
         return user;
+    }
+
+    public boolean checkAdmin(UserDetailsImpl userDetails){
+        boolean isAdmin;
+        if(userDetails.getUser().getRole() == null){return false;}
+        if(userDetails.getUser().getRole() == UserRoleEnum.ADMIN){
+            isAdmin = true;
+        }else isAdmin = false;
+
+        return isAdmin;
     }
 
 }

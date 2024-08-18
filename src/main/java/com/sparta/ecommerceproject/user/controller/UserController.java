@@ -31,7 +31,6 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequestDto loginRequestDto,
                                         HttpServletResponse response) {
-
         User loginedUser = userService.login(loginRequestDto);
         String token = jwtUtil.createToken(loginedUser.getId(), loginedUser.getEmail(),
                 loginedUser.getUsername(), loginedUser.getRole());
@@ -41,13 +40,9 @@ public class UserController {
         return ResponseEntity.ok().body(loginedUser.getRole().toString());
     }
 
-    @GetMapping("/loginstatus")
-    public ResponseEntity<Boolean> checkStatus(@AuthenticationPrincipal UserDetailsImpl userDetails){
-        boolean status = true;
-        if(userDetails.getUser().getUsername().isBlank()){
-           status = false;
-        }
-        return ResponseEntity.ok().body(status);
+    @GetMapping("/isAdmin")
+    public ResponseEntity<Boolean> checkAdmin(@AuthenticationPrincipal UserDetailsImpl userDetails){
+        return ResponseEntity.ok().body(userService.checkAdmin(userDetails));
     }
 
 
