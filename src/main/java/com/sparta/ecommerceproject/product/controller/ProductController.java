@@ -58,4 +58,10 @@ public class ProductController {
 
     }
 
+    @GetMapping("/secondtestCICD")
+    public ResponseEntity<List<ProductResponse>> getAllProducts3(){
+        return ResponseEntity.status(200).body(productService.getAllProducts());
+
+    }
+
 }
