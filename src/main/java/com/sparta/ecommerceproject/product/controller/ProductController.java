@@ -52,16 +52,6 @@ public class ProductController {
         return ResponseEntity.status(200).body(productService.getAllProducts());
 
     }
-    @GetMapping("/testCICD")
-    public ResponseEntity<List<ProductResponse>> getAllProducts2(){
-        return ResponseEntity.status(200).body(productService.getAllProducts());
 
-    }
-
-    @GetMapping("/secondtestCICD")
-    public ResponseEntity<List<ProductResponse>> getAllProducts3(){
-        return ResponseEntity.status(200).body(productService.getAllProducts());
-
-    }
 
 }
