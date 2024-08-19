@@ -16,7 +16,7 @@ import com.sparta.ecommerceproject.user.entity.UserRoleEnum;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://43.201.135.127:3000")
 public class UserController {
 
     private final UserService userService;
