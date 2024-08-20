@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/order")
-@CrossOrigin("http://43.201.135.127:3000")
+@CrossOrigin("http://43.200.67.22:3000")
 public class OrderController {
 
     private final OrderService orderService;

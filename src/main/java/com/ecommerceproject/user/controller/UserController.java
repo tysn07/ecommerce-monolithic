@@ -15,7 +15,7 @@ import com.ecommerceproject.user.entity.User;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
-@CrossOrigin("http://43.201.135.127:3000")
+@CrossOrigin("http://43.200.67.22:3000")
 public class UserController {
 
     private final UserService userService;
