@@ -15,7 +15,6 @@ import com.ecommerceproject.user.entity.User;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
-@CrossOrigin("http://son7shop.com")
 public class UserController {
 
     private final UserService userService;
