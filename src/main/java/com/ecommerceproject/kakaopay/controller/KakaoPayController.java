@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/payment")
-@CrossOrigin("https://son7shop.com")
+@CrossOrigin("http://son7shop.com")
 public class KakaoPayController {
 
     private final KakaoPayService kakaoPayService;
