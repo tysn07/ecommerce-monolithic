@@ -13,7 +13,7 @@ import java.nio.file.AccessDeniedException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users/address")
-@CrossOrigin("http://son7shop.com")
+@CrossOrigin("https://son7shop.com")
 public class AddressController {
 
     private final AddressService addressService;
