@@ -7,6 +7,7 @@ import com.ecommerceproject.user.dto.LoginRequestDto;
 import com.ecommerceproject.user.dto.SignupRequestDto;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +15,19 @@ import com.ecommerceproject.user.entity.User;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/users")
+//@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
     private final JwtUtil jwtUtil;
-    @PostMapping("/signup")
+    @PostMapping("/users/signup")
     public ResponseEntity<String> signup(
             @RequestBody SignupRequestDto signupRequestDto) {
         userService.signup(signupRequestDto);
         return ResponseEntity.ok().body("회원가입 성공");
     }
 
-    @PostMapping("/login")
+    @PostMapping("/users/login")
     public ResponseEntity<String> login(@RequestBody LoginRequestDto loginRequestDto,
                                         HttpServletResponse response) {
         User loginedUser = userService.login(loginRequestDto);
@@ -38,11 +39,15 @@ public class UserController {
         return ResponseEntity.ok().body(loginedUser.getRole().toString());
     }
 
-    @GetMapping("/isAdmin")
+    @GetMapping("/users/isAdmin")
     public ResponseEntity<Boolean> checkAdmin(@AuthenticationPrincipal UserDetailsImpl userDetails){
         return ResponseEntity.ok().body(userService.checkAdmin(userDetails));
     }
 
+    @GetMapping("/")
+    public ResponseEntity<String> healthCheck() {
+            return ResponseEntity.ok("Status: UP");
+    }
 
 }
 
