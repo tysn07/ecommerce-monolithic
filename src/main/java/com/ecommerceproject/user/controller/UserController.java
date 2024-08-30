@@ -44,10 +44,7 @@ public class UserController {
         return ResponseEntity.ok().body(userService.checkAdmin(userDetails));
     }
 
-    @GetMapping("/")
-    public ResponseEntity<String> healthCheck() {
-            return ResponseEntity.ok("Status: UP");
-    }
+
 
 }
 
