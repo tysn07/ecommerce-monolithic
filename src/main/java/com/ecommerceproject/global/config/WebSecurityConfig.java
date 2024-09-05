@@ -55,7 +55,8 @@ public class WebSecurityConfig {
                 authorizeHttpRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                         .permitAll() // resources 접근 허용 설정
-                        .requestMatchers("**","/actuator/health","/").permitAll()
+                        .requestMatchers("**","/actuator/health").permitAll()
+
         );
 
         // 필터 관리
