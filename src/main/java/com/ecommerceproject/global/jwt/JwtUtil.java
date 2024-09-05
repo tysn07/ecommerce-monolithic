@@ -58,7 +58,8 @@ public class JwtUtil {
         cookie.setPath("/");
         cookie.setMaxAge(60 * 60);
         cookie.setSecure(true);
-        cookie.setHttpOnly(true);
+
+
 
         // Response 객체에 Cookie 추가
         res.addCookie(cookie);
