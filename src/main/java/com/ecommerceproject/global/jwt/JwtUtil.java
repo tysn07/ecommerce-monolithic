@@ -56,7 +56,7 @@ public class JwtUtil {
 
         Cookie cookie = new Cookie(AUTHORIZATION_HEADER, token); // Name-Value
         cookie.setPath("/");
-        cookie.setMaxAge(60 * 60);
+        cookie.setMaxAge(60 * 60 * 10);
         cookie.setSecure(true);
         cookie.setHttpOnly(false);
 
