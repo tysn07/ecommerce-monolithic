@@ -59,7 +59,7 @@ public class JwtUtil {
         cookie.setMaxAge(60 * 60 * 10);
         cookie.setSecure(true);
         cookie.setHttpOnly(false);
-        cookie.setDomain("https://son7shop.com");
+        cookie.setDomain("son7shop.com");
 
 
 
