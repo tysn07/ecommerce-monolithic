@@ -27,7 +27,7 @@ public class KakaoPayController {
     public RedirectView afterGetRedirectUrl(@PathVariable Long orderId, @RequestParam("pg_token") String pgToken) throws Exception {
         PayApproveResDto kakaoApprove = kakaoPayService.getApprove(pgToken,orderId);
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://localhost:3000/");
+        redirectView.setUrl("https://son7shop.com");
         return redirectView;
     }
 

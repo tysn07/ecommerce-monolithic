@@ -20,9 +20,9 @@ public class MakeRequest {
         map.add("quantity","1");
         map.add("total_amount",payInfoDto.getPrice()+"");
         map.add("tax_free_amount", "0");
-        map.add("approval_url", "http://localhost:8080/payment/success/"+orderId); // 성공 시 redirect url
-        map.add("cancel_url", "https://localhost:8080/payment/cancel"); // 취소 시 redirect url
-        map.add("fail_url", "http://localhost:8080/payment/fail"); // 실패 시 redirect url
+        map.add("approval_url", "https://back.son7shop.com/payment/success/"+orderId); // 성공 시 redirect url
+        map.add("cancel_url", "https://back.son7shop.com/payment/cancel"); // 취소 시 redirect url
+        map.add("fail_url", "https://back.son7shop.com/payment/fail"); // 실패 시 redirect url
         return new PayRequestDto("https://kapi.kakao.com/v1/payment/ready",map);
     }
 
