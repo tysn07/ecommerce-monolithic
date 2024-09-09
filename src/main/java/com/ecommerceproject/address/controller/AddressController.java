@@ -9,6 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.AccessDeniedException;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -33,5 +34,9 @@ public class AddressController {
 
         return ResponseEntity.ok("주소 삭제 완료");
     }
+    @GetMapping("/list")
+    public ResponseEntity<List<String>> getUserAddressList(@AuthenticationPrincipal UserDetailsImpl userDetails){
+        return ResponseEntity.ok(addressService.getUserAddressList(userDetails.getUser().getId()));
 
+    }
 }

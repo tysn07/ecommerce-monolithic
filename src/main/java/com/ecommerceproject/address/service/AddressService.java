@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.AccessDeniedException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,4 +38,12 @@ public class AddressService {
                 .orElseThrow(() -> new RuntimeException("주소를 찾을 수 없습니다."));
     }
 
+    public List<String> getUserAddressList(Long userId){
+        List<Address> List = addressRepository.findAddressesByUserId(userId);
+        List<String> StringList = new ArrayList<>();
+        for(Address address:List){
+            StringList.add(address.getAddress());
+        }
+        return StringList;
+    }
 }
