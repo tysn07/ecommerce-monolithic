@@ -6,6 +6,6 @@ import java.util.Map;
 public class OrderRequestDto {
 
     private Map<Long,Long> basket;
-    private Long addressId;
+    private String address;
 
 }

@@ -15,12 +15,4 @@ public class OrderResponseDto {
     private Long orderId;
     private String address;
     private String state;
-
-    public OrderResponseDto(Long orderId, Address address,String state) {
-        this.orderId = orderId;
-        this.address = address.getAddress();
-        this.state = state;
-    }
-
-
 }

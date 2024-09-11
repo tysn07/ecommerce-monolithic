@@ -21,7 +21,7 @@ public class OrderController {
 
     @PostMapping("")
     public ResponseEntity<String> makeOrder(@RequestBody OrderRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) throws Exception {
-        orderService.createOrder(requestDto.getBasket(),userDetails, requestDto.getAddressId());
+        orderService.createOrder(requestDto.getBasket(),userDetails, requestDto.getAddress());
         return ResponseEntity.status(201)
                 .body("order created");
     }
