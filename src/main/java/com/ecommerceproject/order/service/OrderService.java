@@ -34,9 +34,9 @@ public class OrderService {
     private final AddressService addressService;
     private final ProductRepository productRepository;
     @Transactional
-    public void createOrder(Map<Long,Long> basket, UserDetailsImpl userDetails, Long addressId) throws Exception {
+    public void createOrder(Map<Long,Long> basket, UserDetailsImpl userDetails, String address) throws Exception {
         checkBasket(basket);
-        Order order = new Order(userDetails.getUser().getId(),addressId, OrderState.NOTPAYED);
+        Order order = new Order(userDetails.getUser().getId(),address, OrderState.NOTPAYED);
         orderRepository.save(order);
         for(Long key:basket.keySet()){
             updateStock(key,basket.get(key));
@@ -72,8 +72,7 @@ public class OrderService {
         List<Order> orderList = orderRepository.findOrdersByUserId(userDetails.getUser().getId());
         List<OrderResponseDto> ResponseList= new ArrayList<OrderResponseDto>();
         for(Order order:orderList){
-            Address address = addressService.findOne(order.getAddressId());
-            OrderResponseDto orderResponseDto = new OrderResponseDto(order.getId(),address,order.getState().toString());
+            OrderResponseDto orderResponseDto = new OrderResponseDto(order.getId(),order.getAddress(),order.getState().toString());
             ResponseList.add(orderResponseDto);
         }
         return ResponseList;

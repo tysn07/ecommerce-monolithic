@@ -19,16 +19,16 @@ public class Order extends Timestamped {
     private Long userId;
 
     @Column
-    private Long addressId;
+    private String address;
 
     @Column
     private String KakaoTid;
 
     @Enumerated(value = EnumType.STRING)
     private OrderState state;
-    public Order(Long userId,Long addressId,OrderState state){
+    public Order(Long userId,String address,OrderState state){
         this.userId = userId;
-        this.addressId = addressId;
+        this.address = address;
         this.state = state;
     }
     public void updateTid(String tid){
