@@ -10,6 +10,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -31,6 +32,8 @@ public class JwtUtil {
     public static final String BEARER_PREFIX = "Bearer ";
 
    // Base64 Encode 한 SecretKey
+
+    @Value("$jwt_secret_key")
     private String secretKey = "7Iqk7YyM66W07YOA7L2U65Sp7YG065+9U3ByaW5n6rCV7J2Y7Yqc7YSw7LWc7JuQ67mI7J6F64uI64ukLg==";
 
     private final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
