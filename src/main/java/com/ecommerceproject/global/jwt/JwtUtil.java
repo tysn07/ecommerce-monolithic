@@ -33,7 +33,7 @@ public class JwtUtil {
 
    // Base64 Encode 한 SecretKey
 
-    @Value("$jwt_secret_key")
+    @Value("${jwt_secret_key}")
     private String secretKey;
 
     private final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
