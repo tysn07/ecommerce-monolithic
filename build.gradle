@@ -22,6 +22,7 @@ repositories {
 }
 
 dependencies {
+    implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '7.4'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
