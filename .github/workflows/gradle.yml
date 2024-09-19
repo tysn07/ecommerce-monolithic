@@ -38,7 +38,10 @@ jobs:
 
       # Docker 이미지 Build
       - name: docker image build
-        run: docker build  --build-arg jwt_secret_key=${{ secrets.JWT_SECRET_KEY }} -t ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project .
+        run: docker build  --build-arg jwt_secret_key=${{ secrets.JWT_SECRET_KEY }} 
+                           --build-arg aws_access_key=${{ secrets.AWS_ACCESS_KEY }} 
+                           --build-arg aws_secret_key=${{ secrets.AWS_SECRET_KEY }} 
+                           -t ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project .
 
       # DockerHub Login (push 하기 위해)
       - name: docker login

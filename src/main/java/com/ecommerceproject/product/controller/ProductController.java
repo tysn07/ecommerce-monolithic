@@ -7,6 +7,8 @@ import com.ecommerceproject.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 
 import java.util.List;
 
@@ -45,6 +47,14 @@ public class ProductController {
 
     }
 
+    @PostMapping("{productId}/image")
+    public void uploadProductImage(@PathVariable Long productId, @RequestParam("file") MultipartFile file) throws IOException {
+        productService.uploadProductImage(productId,file);
+    }
 
+    @GetMapping("{productId}/image")
+    public String getProductImage(@PathVariable Long productId) throws IOException {
+        return productService.getProductImage(productId);
+    }
 
 }

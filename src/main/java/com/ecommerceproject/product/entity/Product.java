@@ -24,6 +24,8 @@ public class Product {
     private String description;
     @Column
     private Long stock;
+    @Column
+    private String imageUrl;
 
 
 
@@ -44,7 +46,9 @@ public class Product {
 
     public void updateStockAfterOrder(Long quantity) {this.stock = stock - quantity;}
 
-
+    public void updateImageUrl(String imageUrl){
+        this.imageUrl =imageUrl;
+    }
 
 
 }
