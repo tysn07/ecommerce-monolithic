@@ -76,6 +76,10 @@ jobs:
       - name: docker run new container
         run: |
           source ~/.bashrc
-          docker run --rm -it -d -e jwt_secret_key=$jwt_secret_key -p 8080:8080 --name ecommerce-project ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project
+          docker run --rm -it -d 
+          -e jwt_secret_key=$jwt_secret_key
+          -e aws_access_key=$aws_access_key 
+          -e aws_secret_key=$aws_secret_key
+          -p 8080:8080 --name ecommerce-project ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-project
       - name: delete old docker image
         run: docker system prune -f
