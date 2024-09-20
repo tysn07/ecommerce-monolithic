@@ -34,7 +34,10 @@ jobs:
 
       # Spring Boot 어플리케이션 Build
       - name: Build with Gradle Wrapper
-        run: jwt_secret_key=${{ secrets.JWT_SECRET_KEY }} ./gradlew build
+        run: jwt_secret_key=${{ secrets.JWT_SECRET_KEY }}
+             aws_access_key=${{ secrets.AWS_ACCESS_KEY }}
+             aws_secret_key=${{ secrets.AWS_SECRET_KEY }}
+             ./gradlew build
 
       # Docker 이미지 Build
       - name: docker image build
