@@ -36,11 +36,11 @@ public class UserService {
             throw new RuntimeException("중복된 email입니다.");
         }
 
-        UserRoleEnum role =UserRoleEnum.USER;
+        UserRoleEnum role = UserRoleEnum.USER;
 
         if (ADMIN_TOKEN.equals(signupRequestDto.getAdminToken())) {
            role = UserRoleEnum.ADMIN;
-        } else throw new RuntimeException("관리자 암호가 일치하지 않습니다.");
+        }
 
 
         userRepository.save(User.builder()
