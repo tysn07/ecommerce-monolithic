@@ -41,8 +41,6 @@ public class UserService {
         if (ADMIN_TOKEN.equals(signupRequestDto.getAdminToken())) {
            role = UserRoleEnum.ADMIN;
         }
-
-
         userRepository.save(User.builder()
                 .email(email)
                 .username(username)
@@ -72,6 +70,10 @@ public class UserService {
         }else isAdmin = false;
 
         return isAdmin;
+    }
+
+    public String getUsername(UserDetailsImpl userDetails){
+        return userDetails.getUsername();
     }
 
 }

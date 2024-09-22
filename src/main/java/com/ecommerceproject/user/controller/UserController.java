@@ -43,6 +43,11 @@ public class UserController {
         return ResponseEntity.ok().body(userService.checkAdmin(userDetails));
     }
 
+    @GetMapping("/username")
+    public ResponseEntity<String> getUsername(@AuthenticationPrincipal UserDetailsImpl userDetails){
+        return ResponseEntity.ok().body(userService.getUsername(userDetails));
+    }
+
 
 
 }
