@@ -35,6 +35,9 @@ public class OrderService {
     private final ProductRepository productRepository;
     @Transactional
     public void createOrder(Map<Long,Long> basket, UserDetailsImpl userDetails, String address) throws Exception {
+        if(address.isEmpty()){
+            throw new RuntimeException("주소를 선택하십시오");
+        }
         checkBasket(basket);
         Order order = new Order(userDetails.getUser().getId(),address, OrderState.NOTPAYED);
         orderRepository.save(order);
@@ -96,6 +99,7 @@ public class OrderService {
         }
         return totalPrice;
     }
+
 
 
 

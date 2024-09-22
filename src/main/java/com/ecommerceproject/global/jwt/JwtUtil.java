@@ -64,8 +64,6 @@ public class JwtUtil {
         cookie.setHttpOnly(false);
         cookie.setDomain("son7shop.com");
 
-
-        // Response 객체에 Cookie 추가
         res.addCookie(cookie);
     }
 
