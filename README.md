@@ -22,7 +22,6 @@
 - <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=Amazon%20EC2&logoColor=white"> : 애플리케이션의 서버 호스팅에 사용되었습니다.
 - <img src="https://img.shields.io/badge/Amazon%20S3-569A31?style=for-the-badge&logo=Amazon%20S3&logoColor=white"> : 정적 파일 및 미디어 파일을 저장하는 데 사용되었습니다.
 - <img src="https://img.shields.io/badge/Amazon%20RDS-527FFF?style=for-the-badge&logo=Amazon%20RDS&logoColor=white"> : 관계형 데이터베이스 서비스로 사용되었습니다.
-- <img src="https://img.shields.io/badge/Amazon%20ElastiCache-C925D1?style=for-the-badge&logo=amazonelasticache&logoColor=white"> : 캐싱 서비스로 사용되었습니다.
 - <img src="https://img.shields.io/badge/amazon%20route%2053-8C4FFF?style=for-the-badge&logo=amazonroute53&logoColor=white"> : 도메인 관리와 DNS 서비스에 사용되었습니다.
 - <img src="https://img.shields.io/badge/Elasticsearch-005571?style=for-the-badge&logo=Elasticsearch&logoColor=white"> : 검색 기능을 구현하는 데 사용되었습니다.
 - <img src="https://img.shields.io/badge/Logstash-005571?style=for-the-badge&logo=Logstash&logoColor=white"> : 로그 데이터를 수집, 처리 및 저장하는 데 사용되었습니다.
