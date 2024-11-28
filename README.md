@@ -22,7 +22,7 @@
 ![응답속도1](https://github.com/user-attachments/assets/d6e5df6c-e14d-4b97-8977-7898f0a577f2) ![응답속도2](https://github.com/user-attachments/assets/2b45528b-2b86-43ec-92eb-e1da408c26e9)
 
 ###  ⚙ 최근 작업 
-사용자의 상품 주문을 최대한 시뮬레이션 하기 위해 카카오 결제 모듈을 추가.MSA 환경에 따른 주문 로직과 결제 로직간에 Transaction 문제 발생. 
+사용자의 상품 주문을 최대한 시뮬레이션 하기 위해 카카오 결제 모듈을 추가를 했었다.하지만 MSA 환경에 따른 주문 로직과 결제 로직간에 Transaction 문제 발생. 분산 트랜스액션으로 해결 예정. Saga Pattern에서 Choreography 방식을 채택하여 microservice간에 transaction들이 rollback 기능하게 끔 개발.  
 
 <img src="https://github.com/user-attachments/assets/cc3468b3-b3de-427c-873b-52cce8bdbae9" alt="Kakao Payment API Sequence Diagram" width="400"/>
 
