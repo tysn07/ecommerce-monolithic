@@ -10,9 +10,11 @@
 이를 통해 서비스 간의 의존성을 최소화하고, 각 서비스를 독립적으로 확장하거나 배포할 수 있는 유연성을 확보했습니다.
 
 3. 동시성 제어 기법 적용
-대량의 요청을 처리하기 위해 동시성 제어 기법을 적극적으로 활용했습니다. 여러 사용자가 동시에 서비스를 요청할 때 발생할 수 있는 데이터 충돌이나 성능 저하를 방지하기 위해 락(Lock), 세마포어(Semaphore) 등의 동기화 기법을 적용하여 처리 성능을 극대화하고 안정성을 확보했습니다.
+대량의 요청을 처리하기 위해 동시성 제어 기법을 적극적으로 활용했습니다. 여러 사용자가 동시에 서비스를 요청할 때 발생할 수 있는 데이터 충돌을 방지하기 위해 비관적 락(Pessimistic Lock)을 적용하여 데이터 일관성을 보장했습니다.
+redission distribution lock을 적용 했을떄 오차 그래프이다. 
+   <img src="https://private-user-images.githubusercontent.com/168810158/390628633-cad40139-ff83-4bde-89dc-d7e88e24f1a1.PNG?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzI3NjQ0NzcsIm5iZiI6MTczMjc2NDE3NywicGF0aCI6Ii8xNjg4MTAxNTgvMzkwNjI4NjMzLWNhZDQwMTM5LWZmODMtNGJkZS04OWRjLWQ3ZTg4ZTI0ZjFhMS5QTkc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMTI4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTEyOFQwMzIyNTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04MTQ0ZjA0ZjVkYTVjMzBhZWYzMzg0ZmRhN2UxYTM2MDY0ZmJmZjM1YzNlMDc3MTRiYThlYTdiZjk2OTVjZjIyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.cZpIaMRRw4ghip4SeqgtJR0n7ZD-sDR3_10Wi32zM9s">
 
-4. 캐싱을 통한 성능 최적화
+5. 캐싱을 통한 성능 최적화
 트래픽 증가에 따른 성능 문제를 해결하기 위해 캐싱(Caching) 기법을 적용하여 자주 조회되는 데이터를 메모리에 저장하고, 데이터베이스 조회를 최소화했습니다. 이를 통해 응답 시간을 단축시키고, 서버 부하를 줄여 전체 시스템의 성능을 대폭 개선했습니다.
 ### ⚙개발환경
 
