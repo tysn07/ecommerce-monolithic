@@ -16,13 +16,13 @@
 ![두번쨰그래프](https://github.com/user-attachments/assets/941c9d93-9830-4e66-a4bd-4de70d801258)
 
 
-4. 캐싱을 통한 성능 최적화
+3. 캐싱을 통한 성능 최적화
 트래픽 증가에 따른 성능 문제를 해결하기 위해 캐싱(Caching) 기법을 적용하여 자주 조회되는 데이터를 Redis 저장소에 저장하고, 데이터베이스 조회를 최소화.이를 통해 응답 시간을 단축시키고, 서버 부하를 줄여 전체 시스템의 성능을 개선.
 
 ![응답속도1](https://github.com/user-attachments/assets/d6e5df6c-e14d-4b97-8977-7898f0a577f2) ![응답속도2](https://github.com/user-attachments/assets/2b45528b-2b86-43ec-92eb-e1da408c26e9)
 
 ###  ⚙ 최근 작업 
-사용자의 상품 주문을 최대한 시뮬레이션 하기 위해 카카오 결제 모듈을 추가를 했었다.하지만 MSA 환경에 따른 주문 로직과 결제 로직간에 Transaction 문제 발생. 분산 트랜스액션으로 해결 예정. Saga Pattern에서 Choreography 방식을 채택하여 microservice간에 transaction들이 rollback 기능하게 끔 개발.  
+사용자의 상품 주문을 최대한 시뮬레이션 하기 위해 카카오 결제 모듈을 추가를 했었다.하지만 MSA 환경에 따른 주문 로직과 결제 로직간에 Transaction 문제 발생. 분산 트랜스액션으로 해결 예정. Saga Pattern에서 Choreography 방식을 채택하여 microservice간에 transaction들이 rollback 기능하게 끔 개발해야한다. 일단 일시적으로 주문 로직과 결제 로직을 별개의 트랜스액션이 되도록 분리를 해놓았다.   
 
 <img src="https://github.com/user-attachments/assets/cc3468b3-b3de-427c-873b-52cce8bdbae9" alt="Kakao Payment API Sequence Diagram" width="400"/>
 
