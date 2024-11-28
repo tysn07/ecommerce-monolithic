@@ -59,3 +59,8 @@
 - <img src="https://img.shields.io/badge/Logstash-005571?style=for-the-badge&logo=Logstash&logoColor=white"> : 로그 데이터를 수집, 처리 및 저장하는 데 사용되었습니다.
 - <img src="https://img.shields.io/badge/Kibana-005571?style=for-the-badge&logo=Kibana&logoColor=white"> : 데이터 시각화 및 분석 도구로 사용되었습니다.
 -  <img src="https://img.shields.io/badge/-ReactJs-61DAFB?style=for-the-badge&logo=react&logoColor=white">: 프론트엔드 개발에 사용되었습니다.
+
+  ### 🎥 시연영상
+   https://github.com/user-attachments/assets/ebea23b6-5fa9-4b9b-a947-65d6853919e8
+
+
