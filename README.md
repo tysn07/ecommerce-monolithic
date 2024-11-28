@@ -14,8 +14,8 @@
 2. 동시성 제어 기법 적용
 대량의 요청을 처리하기 위해 동시성 제어 기법을 적극적으로 활용했습니다. 여러 사용자가 동시에 서비스를 요청할 때 발생할 수 있는 데이터 충돌을 방지하기 위해 비관적 락(Pessimistic Lock)을 적용하여 데이터 일관성을 보장.
    첫번쨰 그래프는 redission에서 제공하는 distribution lock을 적용 했을떄 오차 그래프이다. 20개 쓰레드까지는 오차가 없었지만 20보다 많은 쓰레드가 전송되면 오차가 발생한다. 이전 락 방식을 변경하여 성능 개선을 하였다. 2번째 그래프는 jpa에서 제공하는 Lock 기능을 적용했을 떄 오차 그래프이다. 2000개 쓰레드까지 처리를 했다.
-<img src="https://github.com/user-attachments/assets/1a4ab341-aab1-4954-ba89-d6eece40813e" alt="Kakao Payment API Sequence Diagram"/>
-<img src="https://github.com/user-attachments/assets/941c9d93-9830-4e66-a4bd-4de70d801258" alt="Kakao Payment API Sequence Diagram"/>
+<img src="https://github.com/user-attachments/assets/1a4ab341-aab1-4954-ba89-d6eece40813e" alt="b"/>
+<img src="https://github.com/user-attachments/assets/941c9d93-9830-4e66-a4bd-4de70d801258" alt="c"/>
 
 
 4. 캐싱을 통한 성능 최적화<br>
@@ -28,7 +28,7 @@
 
  **결제 모듈 API Sequence Diagram**--------------------------------------------**Choreography Saga 패턴**                                                                                                                                                                                                   
  
-<img src="https://github.com/user-attachments/assets/cc3468b3-b3de-427c-873b-52cce8bdbae9" alt="Kakao Payment API Sequence Diagram" width="400"/>![picsa](https://github.com/user-attachments/assets/f8518f3e-2e89-4876-afa6-226f9ce5e94e)
+<img src="https://github.com/user-attachments/assets/cc3468b3-b3de-427c-873b-52cce8bdbae9" alt="Kakao Payment API Sequence Diagram" width="400"/><img src="https://github.com/user-attachments/assets/f8518f3e-2e89-4876-afa6-226f9ce5e94e" alt="Kakao Payment API Sequence Diagram" width="400"/>
 
 
   
