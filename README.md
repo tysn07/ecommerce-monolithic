@@ -3,11 +3,11 @@
 - 프로젝트 이름 : Son7shop
 - 프로젝트 기간 : 24.6.01 ~
 - 프로젝트 설명 :  이 프로젝트는 대용량 트래픽을 효과적으로 처리하기 위해 기존 Monolithic 아키텍처를 Microservice 아키텍처로 분리하고, 성능 최적화를 다양한 기법을 적용한 시스템 개선 프로젝트입니다.
-<img src="https://private-user-images.githubusercontent.com/168810158/390628616-4bd8fba3-7b87-4e4e-9e9d-3b64ff05a6bf.PNG?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzI3Njg2MzcsIm5iZiI6MTczMjc2ODMzNywicGF0aCI6Ii8xNjg4MTAxNTgvMzkwNjI4NjE2LTRiZDhmYmEzLTdiODctNGU0ZS05ZTlkLTNiNjRmZjA1YTZiZi5QTkc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMTI4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTEyOFQwNDMyMTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02N2UzNzNlYzYwZDI2MDM0ZjVhZGRjNzIxNGI4YjZmZDdkYTJkZjY2OTQzZDNhYTJlYTg0NWMwMWNjZTMzY2UyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.dgfOJu0vk7S6vjLzTaC8tSlLoqD1w7GvTj7NHlDdQEc">
+
  ### ⚙ 개선 및 트러블슈팅                  
 1. Monolithic에서 Microservice로 아키텍처 전환
 기존의 모놀리식(Monolithic) 아키텍처는 시스템의 모든 기능이 하나의 단위로 구성되어 있어 대규모 트래픽을 처리하는 데 한계가 있었습니다. 이에 따라 시스템을 여러 개의 독립적인 Microservice로 분리하여 각 서비스가 독립적으로 운영되도록 개선했습니다.
-이를 통해 서비스 간의 의존성을 최소화하고, 각 서비스를 독립적으로 확장하거나 배포할 수 있는 유연성을 확보했습니다.
+이를 통해 서비스 간의 의존성을 최소화하고, 각 서비스를 독립적으로 확장하거나 배포할 수 있는 유연성을 확보했습니다.<img src="https://private-user-images.githubusercontent.com/168810158/390628616-4bd8fba3-7b87-4e4e-9e9d-3b64ff05a6bf.PNG?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzI3Njg2MzcsIm5iZiI6MTczMjc2ODMzNywicGF0aCI6Ii8xNjg4MTAxNTgvMzkwNjI4NjE2LTRiZDhmYmEzLTdiODctNGU0ZS05ZTlkLTNiNjRmZjA1YTZiZi5QTkc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMTI4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTEyOFQwNDMyMTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02N2UzNzNlYzYwZDI2MDM0ZjVhZGRjNzIxNGI4YjZmZDdkYTJkZjY2OTQzZDNhYTJlYTg0NWMwMWNjZTMzY2UyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.dgfOJu0vk7S6vjLzTaC8tSlLoqD1w7GvTj7NHlDdQEc">
 
 3. 동시성 제어 기법 적용
 대량의 요청을 처리하기 위해 동시성 제어 기법을 적극적으로 활용했습니다. 여러 사용자가 동시에 서비스를 요청할 때 발생할 수 있는 데이터 충돌을 방지하기 위해 비관적 락(Pessimistic Lock)을 적용하여 데이터 일관성을 보장했습니다.
