@@ -32,7 +32,7 @@
 
 
   
-### 아키텍처
+### 🏢 아키텍처
 ![arcit](https://github.com/user-attachments/assets/83d2982f-9364-40a7-b2b3-a9a79e548584)
 
 
