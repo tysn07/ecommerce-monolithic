@@ -18,10 +18,11 @@
 
 4. 캐싱을 통한 성능 최적화
 트래픽 증가에 따른 성능 문제를 해결하기 위해 캐싱(Caching) 기법을 적용하여 자주 조회되는 데이터를 Redis 저장소에 저장하고, 데이터베이스 조회를 최소화.이를 통해 응답 시간을 단축시키고, 서버 부하를 줄여 전체 시스템의 성능을 개선.
+
 ![응답속도1](https://github.com/user-attachments/assets/d6e5df6c-e14d-4b97-8977-7898f0a577f2) ![응답속도2](https://github.com/user-attachments/assets/2b45528b-2b86-43ec-92eb-e1da408c26e9)
 
-###  ⚙ 추가 기능 
-사용자의 상품 주문을 최대한 시뮬레이션 하기 위해 카카오 결제 모듈을 추가.
+###  ⚙ 최근 작업 
+사용자의 상품 주문을 최대한 시뮬레이션 하기 위해 카카오 결제 모듈을 추가.MSA 환경에 따른 주문 로직과 결제 로직간에 Transaction 문제 발생. 
 
 <img src="https://github.com/user-attachments/assets/cc3468b3-b3de-427c-873b-52cce8bdbae9" alt="Kakao Payment API Sequence Diagram" width="400"/>
 
